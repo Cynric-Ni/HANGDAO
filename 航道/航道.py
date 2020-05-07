@@ -39,5 +39,27 @@ print(html)
 
 html=BeautifulSoup(html,'html.parser')
 
+i=0
 
+info_link={}
 
+info_text={}
+
+for link in html.find_all('a'):
+    
+    i+=1
+   
+    #把href中的内容赋值给info_link##
+    info_link[i]=link.get('href')
+    
+    #把a标签中的文字赋值给info_text,并去除空格###
+    info_text[i]=link.get_text(strip=True)
+    
+    #打印出info_text和info_link，并换行
+    #数组第28位为第一个##
+print(info_text[28])
+
+print(info_link[28]+'\n')
+
+##补全./202005/t20200506_119416.htm##
+print('http://www.cjhdj.com.cn/zzq/whhdj/xwzx/hdyw'+info_link[28][2:29]+'\n')
